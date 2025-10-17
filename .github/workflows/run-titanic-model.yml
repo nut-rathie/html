@@ -1,0 +1,33 @@
+name: Run Titanic survival model
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run Titanic model script
+        run: |
+          python analysis/titanic_model.py
+
+      - name: Upload predictions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: titanic-predictions
+          path: analysis/titanic_predictions.csv
