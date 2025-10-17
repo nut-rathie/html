@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors Battle</title>
+  <style>
+    :root {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color-scheme: light dark;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #f0f4ff, #d6e4ff 45%, #aac4ff);
+      color: #102a43;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2.5rem 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 1.5rem 3rem rgba(15, 45, 80, 0.2);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.05em;
+      color: #1f3c88;
+    }
+
+    .scoreboard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .score {
+      flex: 1 1 50%;
+      background: rgba(31, 60, 136, 0.07);
+      padding: 1.2rem 1rem;
+      border-radius: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .score span {
+      display: block;
+      font-size: 2.4rem;
+      margin-top: 0.5rem;
+      color: #1f3c88;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      border: none;
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      background: linear-gradient(135deg, #5dade2, #2874a6);
+      color: #fff;
+      box-shadow: 0 0.75rem 1.5rem rgba(20, 60, 100, 0.25);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      background: linear-gradient(135deg, #a0a7b5, #7d8799);
+      box-shadow: none;
+      transform: none;
+    }
+
+    .status {
+      font-size: 1.2rem;
+      min-height: 3rem;
+    }
+
+    .battle-message {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1f3c88;
+      min-height: 2rem;
+    }
+
+    .history {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      max-height: 120px;
+      overflow-y: auto;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: rgba(31, 60, 136, 0.05);
+    }
+
+    .reset {
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, #ff7f50, #f75c2f);
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 2rem 1.6rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1.7rem;
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Battle of 🪨📄✂️</h1>
+    <section class="scoreboard" aria-live="polite">
+      <div class="score" id="player-score">You<br><span>0</span></div>
+      <div class="score" id="computer-score">Computer<br><span>0</span></div>
+    </section>
+
+    <section class="status" id="status" aria-live="assertive"></section>
+    <section class="battle-message" id="battle-message" aria-live="polite"></section>
+
+    <section class="controls" aria-label="Choose your weapon">
+      <button type="button" data-choice="rock" aria-label="Rock">🪨</button>
+      <button type="button" data-choice="paper" aria-label="Paper">📄</button>
+      <button type="button" data-choice="scissors" aria-label="Scissors">✂️</button>
+    </section>
+
+    <section class="history" id="history" aria-live="polite"></section>
+
+    <button class="reset" id="reset" type="button">🔄 New Battle</button>
+  </main>
+
+  <script>
+    const choices = [
+      { name: 'rock', emoji: '🪨' },
+      { name: 'paper', emoji: '📄' },
+      { name: 'scissors', emoji: '✂️' }
+    ];
+
+    const playerScoreEl = document.querySelector('#player-score span');
+    const computerScoreEl = document.querySelector('#computer-score span');
+    const statusEl = document.getElementById('status');
+    const battleMessageEl = document.getElementById('battle-message');
+    const historyEl = document.getElementById('history');
+    const controlButtons = document.querySelectorAll('.controls button');
+    const resetButton = document.getElementById('reset');
+
+    let playerWins = 0;
+    let computerWins = 0;
+    let rounds = 0;
+
+    function computerPlay() {
+      const randomIndex = Math.floor(Math.random() * choices.length);
+      return choices[randomIndex];
+    }
+
+    function determineWinner(player, computer) {
+      if (player.name === computer.name) return 'tie';
+
+      const winningPairs = {
+        rock: 'scissors',
+        paper: 'rock',
+        scissors: 'paper'
+      };
+
+      return winningPairs[player.name] === computer.name ? 'player' : 'computer';
+    }
+
+    function updateScores() {
+      playerScoreEl.textContent = playerWins;
+      computerScoreEl.textContent = computerWins;
+    }
+
+    function addHistoryEntry(player, computer, result) {
+      const emojiMap = {
+        player: '✅',
+        computer: '❌',
+        tie: '🤝'
+      };
+
+      const outcomeText = {
+        player: 'You won the round!',
+        computer: 'Computer won the round.',
+        tie: "It's a tie."
+      };
+
+      const entry = document.createElement('p');
+      entry.innerHTML = `${emojiMap[result]} Round ${rounds}: You played <strong>${player.emoji}</strong> &mdash; Computer played <strong>${computer.emoji}</strong>. ${outcomeText[result]}`;
+      historyEl.prepend(entry);
+    }
+
+    function endBattle(message) {
+      battleMessageEl.textContent = message;
+      controlButtons.forEach(button => (button.disabled = true));
+    }
+
+    function resetBattle() {
+      playerWins = 0;
+      computerWins = 0;
+      rounds = 0;
+      updateScores();
+      statusEl.textContent = '';
+      battleMessageEl.textContent = '';
+      historyEl.innerHTML = '';
+      controlButtons.forEach(button => (button.disabled = false));
+    }
+
+    function handlePlayerChoice(event) {
+      const button = event.currentTarget;
+      const playerChoice = choices.find(choice => choice.name === button.dataset.choice);
+      const computerChoice = computerPlay();
+      const result = determineWinner(playerChoice, computerChoice);
+
+      rounds += 1;
+
+      if (result === 'player') {
+        playerWins += 1;
+        statusEl.textContent = `🎯 Round ${rounds}: You won! ${playerChoice.emoji} beats ${computerChoice.emoji}.`;
+      } else if (result === 'computer') {
+        computerWins += 1;
+        statusEl.textContent = `⚔️ Round ${rounds}: Computer won. ${computerChoice.emoji} beats ${playerChoice.emoji}.`;
+      } else {
+        statusEl.textContent = `🤝 Round ${rounds}: It's a tie! You both chose ${playerChoice.emoji}.`;
+      }
+
+      updateScores();
+      addHistoryEntry(playerChoice, computerChoice, result);
+
+      if (playerWins >= 5) {
+        endBattle('🎉 Victory! You won the battle with 5 triumphs!');
+      } else if (computerWins >= 5) {
+        endBattle('😿 Defeat! The computer claimed the battle.');
+      }
+    }
+
+    controlButtons.forEach(button => button.addEventListener('click', handlePlayerChoice));
+    resetButton.addEventListener('click', resetBattle);
+  </script>
+</body>
+</html>
