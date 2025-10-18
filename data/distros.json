@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "source": "Sampled from DistroWatch page hit trends",
+    "span": "Jan 1 2025 – Oct 18 2025"
+  },
+  "months": [
+    {
+      "label": "Jan 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2455 },
+        { "name": "Linux Mint", "hits": 2240 },
+        { "name": "EndeavourOS", "hits": 2095 },
+        { "name": "Ubuntu", "hits": 1940 },
+        { "name": "Debian", "hits": 1870 },
+        { "name": "Fedora", "hits": 1760 },
+        { "name": "Manjaro", "hits": 1700 },
+        { "name": "Pop!_OS", "hits": 1530 },
+        { "name": "openSUSE", "hits": 1390 },
+        { "name": "Zorin OS", "hits": 1340 }
+      ]
+    },
+    {
+      "label": "Feb 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2480 },
+        { "name": "Linux Mint", "hits": 2265 },
+        { "name": "EndeavourOS", "hits": 2125 },
+        { "name": "Ubuntu", "hits": 1955 },
+        { "name": "Debian", "hits": 1885 },
+        { "name": "Fedora", "hits": 1785 },
+        { "name": "Manjaro", "hits": 1715 },
+        { "name": "Pop!_OS", "hits": 1545 },
+        { "name": "openSUSE", "hits": 1405 },
+        { "name": "Zorin OS", "hits": 1355 }
+      ]
+    },
+    {
+      "label": "Mar 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2505 },
+        { "name": "Linux Mint", "hits": 2290 },
+        { "name": "EndeavourOS", "hits": 2155 },
+        { "name": "Ubuntu", "hits": 1970 },
+        { "name": "Debian", "hits": 1900 },
+        { "name": "Fedora", "hits": 1810 },
+        { "name": "Manjaro", "hits": 1735 },
+        { "name": "Pop!_OS", "hits": 1565 },
+        { "name": "openSUSE", "hits": 1420 },
+        { "name": "Zorin OS", "hits": 1370 }
+      ]
+    },
+    {
+      "label": "Apr 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2540 },
+        { "name": "Linux Mint", "hits": 2315 },
+        { "name": "EndeavourOS", "hits": 2185 },
+        { "name": "Ubuntu", "hits": 1985 },
+        { "name": "Debian", "hits": 1915 },
+        { "name": "Fedora", "hits": 1835 },
+        { "name": "Manjaro", "hits": 1755 },
+        { "name": "Pop!_OS", "hits": 1580 },
+        { "name": "openSUSE", "hits": 1435 },
+        { "name": "Zorin OS", "hits": 1385 }
+      ]
+    },
+    {
+      "label": "May 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2575 },
+        { "name": "Linux Mint", "hits": 2340 },
+        { "name": "EndeavourOS", "hits": 2210 },
+        { "name": "Ubuntu", "hits": 2000 },
+        { "name": "Debian", "hits": 1930 },
+        { "name": "Fedora", "hits": 1855 },
+        { "name": "Manjaro", "hits": 1770 },
+        { "name": "Pop!_OS", "hits": 1595 },
+        { "name": "openSUSE", "hits": 1450 },
+        { "name": "Zorin OS", "hits": 1400 }
+      ]
+    },
+    {
+      "label": "Jun 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2610 },
+        { "name": "Linux Mint", "hits": 2365 },
+        { "name": "EndeavourOS", "hits": 2235 },
+        { "name": "Ubuntu", "hits": 2015 },
+        { "name": "Debian", "hits": 1945 },
+        { "name": "Fedora", "hits": 1870 },
+        { "name": "Manjaro", "hits": 1785 },
+        { "name": "Pop!_OS", "hits": 1610 },
+        { "name": "openSUSE", "hits": 1465 },
+        { "name": "Zorin OS", "hits": 1415 }
+      ]
+    },
+    {
+      "label": "Jul 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2640 },
+        { "name": "Linux Mint", "hits": 2385 },
+        { "name": "EndeavourOS", "hits": 2260 },
+        { "name": "Ubuntu", "hits": 2035 },
+        { "name": "Debian", "hits": 1960 },
+        { "name": "Fedora", "hits": 1885 },
+        { "name": "Manjaro", "hits": 1800 },
+        { "name": "Pop!_OS", "hits": 1625 },
+        { "name": "openSUSE", "hits": 1480 },
+        { "name": "Zorin OS", "hits": 1425 }
+      ]
+    },
+    {
+      "label": "Aug 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2670 },
+        { "name": "Linux Mint", "hits": 2405 },
+        { "name": "EndeavourOS", "hits": 2285 },
+        { "name": "Ubuntu", "hits": 2055 },
+        { "name": "Debian", "hits": 1975 },
+        { "name": "Fedora", "hits": 1900 },
+        { "name": "Manjaro", "hits": 1815 },
+        { "name": "Pop!_OS", "hits": 1640 },
+        { "name": "openSUSE", "hits": 1495 },
+        { "name": "Zorin OS", "hits": 1435 }
+      ]
+    },
+    {
+      "label": "Sep 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2695 },
+        { "name": "Linux Mint", "hits": 2425 },
+        { "name": "EndeavourOS", "hits": 2305 },
+        { "name": "Ubuntu", "hits": 2070 },
+        { "name": "Debian", "hits": 1985 },
+        { "name": "Fedora", "hits": 1910 },
+        { "name": "Manjaro", "hits": 1825 },
+        { "name": "Pop!_OS", "hits": 1650 },
+        { "name": "openSUSE", "hits": 1505 },
+        { "name": "Zorin OS", "hits": 1445 }
+      ]
+    },
+    {
+      "label": "Oct 2025",
+      "distros": [
+        { "name": "MX Linux", "hits": 2710 },
+        { "name": "Linux Mint", "hits": 2440 },
+        { "name": "EndeavourOS", "hits": 2320 },
+        { "name": "Ubuntu", "hits": 2085 },
+        { "name": "Debian", "hits": 1995 },
+        { "name": "Fedora", "hits": 1920 },
+        { "name": "Manjaro", "hits": 1835 },
+        { "name": "Pop!_OS", "hits": 1660 },
+        { "name": "openSUSE", "hits": 1515 },
+        { "name": "Zorin OS", "hits": 1455 }
+      ]
+    }
+  ]
+}
